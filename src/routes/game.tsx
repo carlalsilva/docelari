@@ -278,7 +278,7 @@ function Game() {
   return (
     <div className="space-y-3">
       <div
-        className="relative w-full overflow-hidden rounded-2xl border-4 border-deep shadow-soft bg-deep"
+        className="relative w-[95vw] sm:w-full max-w-5xl mx-auto overflow-hidden rounded-2xl border-4 border-deep shadow-soft bg-deep touch-none"
         style={{ aspectRatio: `${GAME_W}/${GAME_H}` }}
         onPointerDown={(e) => {
           e.preventDefault();
@@ -292,6 +292,7 @@ function Game() {
           className="block w-full h-full select-none touch-none"
           style={{ imageRendering: "pixelated" }}
         />
+        {/* Invisible full-area tap target is the container itself */}
         {state === "gameover" && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/70 backdrop-blur-sm">
             <div className="bg-card text-card-foreground rounded-xl p-5 sm:p-6 max-w-xs w-[90%] text-center space-y-3 shadow-glow">
@@ -314,14 +315,30 @@ function Game() {
               ) : (
                 <p className="text-sm text-primary">✨ Salvo no ranking!</p>
               )}
-              <Button variant="outline" onClick={() => { reset(); setState("playing"); }} className="w-full">
+              <Button
+                variant="outline"
+                onClick={(e) => { e.stopPropagation(); reset(); setState("playing"); }}
+                onPointerDown={(e) => e.stopPropagation()}
+                className="w-full"
+              >
                 <RotateCcw className="h-4 w-4" /> Jogar novamente
               </Button>
             </div>
           </div>
         )}
       </div>
-      <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-deep">
+
+      {/* Big mobile-friendly jump button */}
+      <button
+        type="button"
+        onPointerDown={(e) => { e.preventDefault(); jump(); }}
+        className="lg:hidden w-[95vw] sm:w-full max-w-5xl mx-auto block h-20 rounded-2xl bg-primary text-primary-foreground font-display text-2xl shadow-glow active:scale-[0.98] transition-transform touch-none select-none"
+        aria-label="Pular"
+      >
+        {state === "playing" ? "🪄 PULAR" : state === "gameover" ? "↻ Jogar novamente" : "▶ Começar"}
+      </button>
+
+      <div className="hidden sm:flex flex-wrap items-center justify-between gap-2 text-sm text-deep">
         <p className="opacity-80">
           <strong>Espaço</strong> / <strong>Toque</strong> para pular obstáculos.
         </p>
