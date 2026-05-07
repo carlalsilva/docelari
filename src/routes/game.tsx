@@ -44,8 +44,8 @@ function GamePage() {
           <h1 className="font-display text-xl sm:text-2xl text-deep">🧙‍♀️ Witch Run</h1>
         </div>
       </header>
-      <main className="mx-auto max-w-5xl px-3 sm:px-6 py-6 sm:py-10">
-        <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+      <main className="mx-auto max-w-5xl px-2 sm:px-6 py-3 sm:py-10">
+        <div className="grid gap-4 sm:gap-6 lg:grid-cols-[1fr_320px]">
           <Game />
           <Leaderboard />
         </div>
