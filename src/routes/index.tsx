@@ -58,6 +58,7 @@ function Header() {
             <a href="#receitas" className="hover:text-primary transition-colors">Grimório</a>
             <a href="#magia" className="hover:text-primary transition-colors">A Magia</a>
             <a href="#encomendas" className="hover:text-primary transition-colors">Encomendas</a>
+            <a href="/game" className="rounded-full bg-primary px-3 py-1 text-primary-foreground hover:bg-primary/90 transition-colors">🎮 Jogo</a>
           </nav>
         </div>
       </div>
