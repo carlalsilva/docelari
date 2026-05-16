@@ -38,7 +38,23 @@ function Index() {
         <Orders />
       </main>
       <Footer />
+      <WhatsAppFab />
     </div>
+  );
+}
+
+function WhatsAppFab() {
+  return (
+    <a
+      href="https://wa.me/5500000000000?text=Oi!%20Quero%20encomendar%20um%20doce%20m%C3%A1gico%20%E2%9C%A8"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Encomendar pelo WhatsApp"
+      className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-4 text-white shadow-glow ring-4 ring-[#25D366]/25 transition-transform hover:scale-105 active:scale-95 sm:bottom-6 sm:right-6"
+    >
+      <MessageCircle className="h-6 w-6" />
+      <span className="text-sm font-bold uppercase tracking-wide hidden sm:inline">Encomendar</span>
+    </a>
   );
 }
 
